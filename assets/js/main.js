@@ -227,37 +227,56 @@
   document.addEventListener('scroll', navmenuScrollspy);
 
   /**
-   * Fetch Testimonials from API
+   * Fetch Testimonials from Avis-Hub API (https://avis.bittonik.com)
    */
   async function fetchTestimonials() {
-    const apiURL = 'https://api.bittonik.com/v1/testimonials'; // API Placeholder
+    const apiURL = 'https://avis.bittonik.com/api/reviews?limit=6';
     try {
       const response = await fetch(apiURL);
-      if (!response.ok) throw new Error('API non disponible');
+      if (!response.ok) throw new Error('API Avis-Hub non disponible');
       const data = await response.json();
+      const reviews = Array.isArray(data) ? data : (data.reviews || []);
       
       const container = document.querySelector('.testimonial-masonry');
-      if (container && Array.isArray(data) && data.length > 0) {
-        container.innerHTML = ''; // Clear fallback content
+      if (container && reviews.length > 0) {
+        container.innerHTML = ''; // Clear fallback demo content
         
-        data.forEach((item, index) => {
+        reviews.forEach((item, index) => {
           let delay = (index % 3) * 100;
           let delayAttr = delay > 0 ? `data-aos-delay="${delay}"` : '';
           
+          let rating = Math.min(Math.max(parseInt(item.rating) || 5, 1), 5);
+          let starsHtml = '';
+          for (let s = 0; s < rating; s++) {
+            starsHtml += '<i class="bi bi-star-fill text-warning me-1" style="font-size: 0.85rem;"></i>';
+          }
+
+          let avatar = item.avatarUrl && item.avatarUrl.trim() !== '' 
+            ? item.avatarUrl 
+            : `assets/img/person/person-m-${(index % 2 === 0 ? 7 : 8)}.webp`;
+          
+          let siteBadge = item.sourceSite 
+            ? `<span class="badge bg-light text-primary border ms-1" style="font-size: 0.75rem;">${item.sourceSite}</span>` 
+            : '';
+          
+          let locationText = item.location ? `<small class="text-muted d-block">${item.location}</small>` : '';
+
           let html = `
             <div class="testimonial-item" data-aos="fade-up" ${delayAttr}>
               <div class="testimonial-content">
                 <div class="quote-pattern">
                   <i class="bi bi-quote"></i>
                 </div>
-                <p>${item.content || item.text || item.quote}</p>
+                <div class="mb-2">${starsHtml}</div>
+                <p style="white-space: pre-line;">${item.comment || item.text || item.content}</p>
                 <div class="client-info">
                   <div class="client-image">
-                    <img src="${item.image || 'assets/img/person/person-m-7.webp'}" alt="Client">
+                    <img src="${avatar}" alt="${item.userName || 'Client'}">
                   </div>
                   <div class="client-details">
-                    <h3>${item.name}</h3>
-                    <span class="position">${item.position || item.role}</span>
+                    <h3>${item.userName || 'Utilisateur vérifié'} ${siteBadge}</h3>
+                    <span class="position"><i class="bi bi-patch-check-fill text-primary me-1"></i>Avis vérifié</span>
+                    ${locationText}
                   </div>
                 </div>
               </div>
@@ -271,7 +290,7 @@
         }
       }
     } catch (error) {
-      console.info('Testimonials API Error - using static fallback HTML.', error);
+      console.info('Avis-Hub API Error - conservation des données statiques.', error);
     }
   }
 
