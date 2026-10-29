@@ -3,6 +3,28 @@ bittonik_home.html
 bwt_bittonik_home.html
 shop_bittonik_home.html
 
-# OS files
+# Heavy media & dynamic uploads (must be on Cloudflare R2 / S3 storage)
+*.mp4
+*.mkv
+*.mov
+*.avi
+*.wmv
+*.flv
+*.zip
+*.tar.gz
+*.rar
+*.7z
+*.iso
+
+# Dynamic user uploads & media folders
+media/
+uploads/
+assets/img/uploads/
+assets/img/gallery/
+
+# OS & Environment
 .DS_Store
 Thumbs.db
+*.log
+.env
+.env.local
