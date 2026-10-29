@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>404 - Page non trouvée | LOUIS Bentzky</title>
+  <meta name="robots" content="noindex, follow">
+
+  <!-- Favicons -->
+  <link href="assets/img/logo.png" rel="icon">
+  <link href="assets/img/logo.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Ubuntu:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <style>
+    .error-page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #0f172a;
+      color: #f8fafc;
+      text-align: center;
+      padding: 30px;
+    }
+    .error-code {
+      font-size: 8rem;
+      font-weight: 900;
+      line-height: 1;
+      background: linear-gradient(135deg, #06b6d4, #3b82f6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 20px;
+    }
+    .error-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+    .error-desc {
+      font-size: 1.1rem;
+      color: #94a3b8;
+      max-width: 500px;
+      margin: 0 auto 30px;
+    }
+    .btn-home {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #2563eb;
+      color: #ffffff;
+      padding: 12px 28px;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+    }
+    .btn-home:hover {
+      background: #1d4ed8;
+      color: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(37, 99, 235, 0.6);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="error-page">
+    <div>
+      <div class="error-code">404</div>
+      <h1 class="error-title">Page introuvable</h1>
+      <p class="error-desc">
+        La page ou la ressource que vous recherchez n'existe pas ou a été déplacée.
+      </p>
+      <a href="index.html" class="btn-home">
+        <i class="bi bi-arrow-left"></i> Retour à l'accueil
+      </a>
+    </div>
+  </div>
+
+</body>
+
+</html>
