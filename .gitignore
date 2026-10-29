@@ -1,0 +1,8 @@
+# Temporary and downloaded html files
+bittonik_home.html
+bwt_bittonik_home.html
+shop_bittonik_home.html
+
+# OS files
+.DS_Store
+Thumbs.db
